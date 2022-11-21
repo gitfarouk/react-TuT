@@ -1,17 +1,20 @@
 import React from 'react'
+import ItemList from './ItemList'
 
-const Content = () => {
-  const handleNameChange = () => {
-    const names = ['Bob', 'Eric', 'Gena']
-    const int = Math.floor(Math.random() * 3);
-    return names[int];
-  }
 
+
+const Content = ({ items, handleCheck, handleDelete }) => {
   return (
     <main>
-      <p>
-        Hello {handleNameChange()}!
-      </p>
+      {items.length ? (
+        <ItemList
+          items={items}
+          handleCheck={handleCheck}
+          handleDelete={handleDelete}
+        />
+      ) : (
+        <p style={{ marginTop: '2rem' }}> Your List is empty</p>
+      )}
     </main>
   )
 }
